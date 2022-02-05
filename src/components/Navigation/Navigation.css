@@ -1,0 +1,34 @@
+.mainNavigatin{
+    width: 100%;
+    height: 60px;
+    background-color: #ede9fe;
+    margin-bottom: 20px;
+}
+.mainNavigatin nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.mainNavigatin ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.mainNavigatin li{
+    margin: 0 1rem;
+    font-weight: bold;
+}
+.mainNavigatin a{
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: dimgray;
+    border-radius: 5px;
+}
+.mainNavigatin a:hover,
+.activeLink {
+    color: #6d28d9;
+    background-color: #fff;
+}
