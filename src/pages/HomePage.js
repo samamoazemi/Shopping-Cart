@@ -3,7 +3,9 @@ import Layout from "../Layout/Layout";
 const HomePage = () => {
     return ( 
         <Layout>
-            <h2>this is home page</h2>
+            <main>
+                <section>product list ...</section>
+            </main>
         </Layout>
      );
 }
