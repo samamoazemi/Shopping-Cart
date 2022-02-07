@@ -44,3 +44,16 @@ body{
   display: flex;
   justify-content: space-between;
 }
+.btn{
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 6px 15px;
+  background-color: #ede9fe;
+  color: #8b5cf6;
+  border-radius: 5px;
+}
+.primary{
+  background-color: #8b5cf6;
+  color: #fff;
+}
