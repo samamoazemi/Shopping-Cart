@@ -2,11 +2,11 @@ import Layout from "../Layout/Layout";
 import * as data from "../data";
 
 const HomePage = () => {
-
+    console.log(data);
     const addProductHandler = (product) => {
         console.log(product);
     }
-    
+
     return ( 
         <Layout>
           <main className="container">
@@ -30,6 +30,7 @@ const HomePage = () => {
             </section>
             </main>
         </Layout>
+
      );
 }
  
