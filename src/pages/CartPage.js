@@ -18,6 +18,7 @@ const CartPage = () => {
     return ( 
         <Layout>
             <main className="container">
+              <section className="cartCenter">
                 <section className="cartItemList">
                     {cart.map((item) => {
                         return(
@@ -37,6 +38,7 @@ const CartPage = () => {
                     })}
                 </section>
                 <section className="cartSummery">cart summery</section>
+              </section>
             </main>
         </Layout>
      );
