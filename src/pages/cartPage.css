@@ -45,3 +45,16 @@ button{
     margin-left: 10px;
     padding: 3px 6px;
 }
+.summeryItem{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.summeryItem.net{
+    border-top: 1px solid #ccc;
+    padding: 5px 0px;
+}
+.cartSummery h2{
+    margin-bottom: 30px;
+}
