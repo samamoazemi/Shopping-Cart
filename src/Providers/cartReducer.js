@@ -12,7 +12,11 @@ const cartReducer = (state, action) => {
                 updatedItem.quantity++;
                 updatedCart[updatedItemIndex] = updatedItem;
             }
-            return { ...state, cart: updatedCart };
+            return { 
+                ...state,
+                cart: updatedCart,
+                total: state.total + action.payload.price,
+            };
         }
         case "REMOVE_PRODUCT": {
             const updatedCart = [...state.cart];
@@ -21,12 +25,21 @@ const cartReducer = (state, action) => {
             );
             const updatedItem = { ...updatedCart[updatedItemIndex] };
             if(updatedItem.quantity === 1){
-             const filteredCart = updatedCart.filter((item) => item.id !== action.payload.id )
-             return{ ...state, cart: filteredCart}
+             const filteredCart = updatedCart.filter(
+                 (item) => item.id !== action.payload.id )
+             return{ 
+                 ...state, 
+                 cart: filteredCart, 
+                 total: state.total - action.payload.price,
+            }
             }else{
                 updatedItem.quantity--;
                 updatedCart[updatedItemIndex] = updatedItem;
-                return{ ...state, cart: updatedCart }
+                return{ 
+                    ...state,
+                    cart: updatedCart,
+                    total: state.total - action.payload.price,
+                }
             }
         }
         default:
