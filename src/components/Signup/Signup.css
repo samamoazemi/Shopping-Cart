@@ -1,0 +1,64 @@
+.formContainer{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.submitSection{
+    width: 25rem;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.submitForm{
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.formControl{
+    width: 20rem;
+    height: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.submitForm input{
+    width: 100%;
+    padding: 8px 8px;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 11px;
+}
+input:focus{
+    border: 1px solid #a78bfa;
+}
+.formControl label{
+    margin: 5px 3px;
+    font-weight: bold;
+    font-size: 14px;
+    color: rgb(63, 63, 63);
+}
+.submitBtn{
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: #8b5cf6;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 8px 10px;
+    margin-top: 20px;
+}
+.submitBtn[disabled], .submitBtn:disabled{
+    background-color: #c4b5fd;
+}
+.error{
+    width: 100%;
+    color: red;
+    font-size: 9px;
+    margin: 2px 0px 0px 2px;
+}
