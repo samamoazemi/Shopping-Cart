@@ -2,6 +2,7 @@ import Input from "../../common/Input";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import "./Signup.css";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const initialValues = {
     name:"",
@@ -54,8 +55,8 @@ const SignupForm = () => {
 
     return ( 
         <div className="formContainer">
-          <section className="submitSection">
-            <form onSubmit={formik.handleSubmit} className="submitForm">
+          <section className="signupSection">
+            <form onSubmit={formik.handleSubmit} className="signupForm">
               <Input formik={formik} name="name" label="Name" />
               <Input formik={formik} name="email" label="Email" type="email" />
               <Input 
@@ -76,9 +77,12 @@ const SignupForm = () => {
                 label="Password Confirmation" 
                 type="password" 
               />
-              <button type="submit" disabled={!formik.isValid} className="submitBtn">
-                submit
+              <button type="submit" disabled={!formik.isValid} className="signupBtn">
+                sign up
               </button>
+              <Link to="/login">
+                <p className="signupStatus">Already login ?</p>
+              </Link>
             </form>
           </section>
         </div>    

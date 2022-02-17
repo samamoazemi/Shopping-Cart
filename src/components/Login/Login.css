@@ -5,14 +5,14 @@
     justify-content: center;
     align-items: center;
 }
-.signupSection{
+.loginSection{
     width: 25rem;
     height: 30rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.signupForm{
+.loginForm{
     width: 20rem;
     display: flex;
     flex-direction: column;
@@ -26,7 +26,7 @@
     flex-direction: column;
     margin-bottom: 20px;
 }
-.signupForm input{
+.loginForm input{
     width: 100%;
     padding: 8px 8px;
     outline: none;
@@ -43,7 +43,7 @@ input:focus{
     font-size: 14px;
     color: rgb(63, 63, 63);
 }
-.signupBtn{
+.loginBtn{
     width: 100%;
     outline: none;
     border: none;
@@ -53,7 +53,7 @@ input:focus{
     padding: 8px 10px;
     margin-top: 20px;
 }
-.signupBtn[disabled], .signupBtn:disabled{
+.loginBtn[disabled], .loginBtn:disabled{
     background-color: #c4b5fd;
 }
 .error{
@@ -61,8 +61,4 @@ input:focus{
     color: red;
     font-size: 9px;
     margin: 2px 0px 0px 2px;
-}
-.signupStatus{
-    margin-top: 20px;
-    font-size: 14px;
 }
