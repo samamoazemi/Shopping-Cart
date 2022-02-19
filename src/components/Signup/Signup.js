@@ -3,6 +3,8 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import "./Signup.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { signupUser } from "../../services/signupService";
+import { useState } from "react";
 
 const initialValues = {
     name:"",
@@ -10,14 +12,6 @@ const initialValues = {
     phoneNumber:"",
     password:"",
     passwordConfirm:"",
-}
-
-const onSubmit = (values) => {
-    console.log(values);
-    // axios
-    //   .post("http://localhost:3001/users", values)
-    //   .then((res) => console.log(res.data))
-    //   .catch((err) => console.log(err))
 }
 
 const validationSchema = yup.object({
@@ -34,10 +28,10 @@ const validationSchema = yup.object({
     .matches(/^[0-9]{11}$/, "Invalid Phone Number"),
 
     password: yup.string()
-    .required("Password is required")
-    .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-        "8 Char, 1 Uppercase, 1 Lowercase, 1 Number and 1 Special"),
+    .required("Password is required"),
+    // .matches(
+    //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+    //     "8 Char, 1 Uppercase, 1 Lowercase, 1 Number and 1 Special"),
     
     passwordConfirm: yup.string()
     .required("Password Confirmation is required")
@@ -45,6 +39,27 @@ const validationSchema = yup.object({
 })
 
 const SignupForm = () => {
+
+  const [ error, setError ] = useState(null);
+  const onSubmit = async (values) => {
+
+    const { name, email, phoneNumber, password } = values;
+   // console.log(values);
+    const userData = {
+      name,
+      email,
+      phoneNumber,
+      password,
+    }
+    try {
+      const { data } = await signupUser(userData);
+      console.log(data);
+    } catch (error) {
+      if(error.response && error.response.data.message){
+        setError(error.response.data.message);
+      }
+    }
+  }
 
   const formik = useFormik ({
     initialValues,
@@ -80,6 +95,7 @@ const SignupForm = () => {
               <button type="submit" disabled={!formik.isValid} className="signupBtn">
                 sign up
               </button>
+              { error && <p style={{color: "red" , fontSize:"13px"}}>{error}</p> }
               <Link to="/login">
                 <p className="signupStatus">Already login ?</p>
               </Link>
