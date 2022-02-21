@@ -2,7 +2,7 @@ import Input from "../../common/Input";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import "./Signup.css";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, withRouter } from "react-router-dom/cjs/react-router-dom.min";
 import { signupUser } from "../../services/signupService";
 import { useState } from "react";
 
@@ -38,8 +38,8 @@ const validationSchema = yup.object({
     .oneOf([yup.ref("password"), null], "Passwords must match")
 })
 
-const SignupForm = () => {
-
+const SignupForm = ({history}) => {
+  console.log(history)
   const [ error, setError ] = useState(null);
   const onSubmit = async (values) => {
 
@@ -53,7 +53,8 @@ const SignupForm = () => {
     }
     try {
       const { data } = await signupUser(userData);
-      console.log(data);
+      setError(null);
+      history.push("/");
     } catch (error) {
       if(error.response && error.response.data.message){
         setError(error.response.data.message);
@@ -105,4 +106,4 @@ const SignupForm = () => {
      );
 }
  
-export default SignupForm;
+export default withRouter(SignupForm);
