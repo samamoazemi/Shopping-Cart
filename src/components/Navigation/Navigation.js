@@ -15,11 +15,18 @@ const Navigation = () => {
                       Home
                   </NavLink>
                 </li>
+              </ul>
+              <ul>
                 <li className="cartLink">
                   <NavLink to="/cart" activeClassName="activeLink">
                       Cart
                   </NavLink>
                   <span>{cart.length}</span>
+                </li>
+                <li className="loginLink">
+                  <NavLink to="/login" activeClassName="activeLink">
+                    login/signup
+                  </NavLink>
                 </li>
               </ul>
             </nav>
