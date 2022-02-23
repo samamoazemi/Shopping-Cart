@@ -5,6 +5,7 @@ import "./Signup.css";
 import { Link, withRouter } from "react-router-dom/cjs/react-router-dom.min";
 import { signupUser } from "../../services/signupService";
 import { useState } from "react";
+import { useAuthActions } from "../../Providers/AuthProvider";
 
 const initialValues = {
     name:"",
@@ -39,7 +40,8 @@ const validationSchema = yup.object({
 })
 
 const SignupForm = ({history}) => {
-  console.log(history)
+  const setAuth = useAuthActions();
+
   const [ error, setError ] = useState(null);
   const onSubmit = async (values) => {
 
@@ -53,6 +55,8 @@ const SignupForm = ({history}) => {
     }
     try {
       const { data } = await signupUser(userData);
+      setAuth(data);
+      localStorage.setItem("authState", JSON.stringify(data));
       setError(null);
       history.push("/");
     } catch (error) {
