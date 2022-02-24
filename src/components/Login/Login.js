@@ -30,7 +30,7 @@ const LoginForm = ({history}) => {
     try {
       const { data } = await loginUser(values);
       setAuth(data);
-      localStorage.setItem("authState", JSON.stringify(data));
+      // localStorage.setItem("authState", JSON.stringify(data));
        setError(null);
        history.push("/");
     } catch (error) {
