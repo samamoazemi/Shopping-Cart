@@ -6,6 +6,7 @@ import { Link, withRouter } from "react-router-dom/cjs/react-router-dom.min";
 import { signupUser } from "../../services/signupService";
 import { useState } from "react";
 import { useAuthActions } from "../../Providers/AuthProvider";
+import { useQuery } from "../../hooks/useQuery";
 
 const initialValues = {
     name:"",
@@ -40,8 +41,12 @@ const validationSchema = yup.object({
 })
 
 const SignupForm = ({history}) => {
-  const setAuth = useAuthActions();
 
+  const query = useQuery();
+  const redirect = query.get("redirect") || "/";
+  console.log(redirect);
+
+  const setAuth = useAuthActions();
   const [ error, setError ] = useState(null);
   const onSubmit = async (values) => {
 
@@ -58,7 +63,7 @@ const SignupForm = ({history}) => {
       setAuth(data);
       // localStorage.setItem("authState", JSON.stringify(data));
       setError(null);
-      history.push("/");
+      history.push(redirect);
     } catch (error) {
       if(error.response && error.response.data.message){
         setError(error.response.data.message);
@@ -101,7 +106,7 @@ const SignupForm = ({history}) => {
                 sign up
               </button>
               { error && <p style={{color: "red" , fontSize:"13px"}}>{error}</p> }
-              <Link to="/login">
+              <Link to={`/login?redirect=${redirect}`}>
                 <p className="signupStatus">Already login ?</p>
               </Link>
             </form>
